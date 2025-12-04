@@ -1,0 +1,420 @@
+:root {
+    --primary: #d35400;
+    --bg: #fdfbf7;        
+    --text: #2c3e50;      
+    --card-bg: #ffffff;   
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    --modal-bg: #ffffff;
+    --border-color: #eee;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --bg: #121212;        
+    --text: #ecf0f1;      
+    --card-bg: #1e1e1e;   
+    --shadow: 0 4px 15px rgba(0,0,0,0.5);
+    --modal-bg: #1e1e1e;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background 0.3s;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+#cart-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--text);
+    color: var(--text);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+#theme-toggle:hover {
+    background: var(--text);
+    color: var(--bg);
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.hero button:hover {
+    transform: scale(1.05);
+}
+
+/* Menu */
+.menu-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-section h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.price {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--modal-bg); /* Fixed dark mode issue here */
+    color: var(--text);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: #27ae60;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* Add this to the bottom of styles.css */
+
+.auth-nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.divider {
+    color: #ccc;
+    font-size: 1.2rem;
+}
+
+.nav-btn {
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.nav-btn.primary-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.auth-content {
+    text-align: center;
+}
+
+.auth-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Fixes width padding issues */
+    font-size: 1rem;
+}
+
+.auth-switch {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.welcome-msg {
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+/* --- GLOBAL UTILITIES (Add this!) --- */
+.hidden {
+    display: none !important;
+}
+
+/* ... keep all your other existing CSS below ... */
+
+/* Optional: Add a pointer style for the password mask in Admin */
+.password-mask {
+    cursor: pointer;
+    font-family: monospace;
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    user-select: none;
+}
+
+/* --- VIP LANDING SCREEN --- */
+.landing-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1633945274405-b6c8069047b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* High priority, covers the site */
+    backdrop-filter: blur(5px); /* Sexy blur effect */
+}
+
+.landing-content {
+    text-align: center;
+    color: white;
+    animation: fadeIn 1s ease-in;
+}
+
+.landing-content h1 {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--primary);
+}
+
+.landing-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #ddd;
+}
+
+.landing-btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.big-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.btn-login {
+    background: white;
+    color: var(--text);
+}
+
+.btn-signup {
+    background: var(--primary);
+    color: white;
+}
+
+.big-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- CRITICAL FIX --- */
+/* Ensure the Login Modal appears ON TOP of the landing screen */
+.modal {
+    z-index: 3000 !important; 
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
